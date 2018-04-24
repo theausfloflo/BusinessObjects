@@ -1,0 +1,47 @@
+##########################################################
+Status of INC
+##########################################################
+
+  If([Priority]="Critical" And [PendingTimeUntilLastUpd] = "0 days" )Then "T0 Critical" ElseIf( [Priority]="High" And [PendingTimeUntilLastUpd] = "0 days" ) Then "T0 High" ElseIf( [Priority]="Medium" And [PendingTimeUntilLastUpd] = "0 days" ) Then "T0 Medium" ElseIf( [Priority]="Low" And [PendingTimeUntilLastUpd] = "0 days" ) Then "T0 Low"
+
+  ElseIf([Priority]="Critical" And [PendingTimeHours] = -12 )Then "T0.5 Critical / Contact User" ElseIf( [Priority]="High" And [PendingTimeHours] = -12 ) Then "T0.5 High / Contact User" ElseIf( [Priority]="Medium" And [PendingTimeUntilLastUpd] = "-1 days") Then "T1 Medium / Contact User" ElseIf( [Priority]="Low" And [PendingTimeUntilLastUpd] = "-1 days" ) Then "T1 Low / Contact User"
+
+  ElseIf([Priority]="Critical" And [PendingTimeUntilLastUpd] = "-2 days" )Then "T2 Critical / Waiting Contact User" ElseIf( [Priority]="High" And [PendingTimeUntilLastUpd] = "-2 days" ) Then "T2 High / Waiting Contact User" ElseIf( [Priority]="Medium" And [PendingTimeUntilLastUpd] = "-2 days" ) Then "T2 Medium / Waiting Contact User" ElseIf( [Priority]="Low" And [PendingTimeUntilLastUpd] = "-2 days" ) Then "T2 Low / Waiting Contact User"
+
+  ElseIf([Priority]="Critical" And [PendingTimeUntilLastUpd] = "-3 days" )Then "T3 Critical / Reminder Mail" ElseIf( [Priority]="High" And [PendingTimeUntilLastUpd] = "-3 days" ) Then "T3 High / Reminder Mail" ElseIf( [Priority]="Medium" And [PendingTimeUntilLastUpd] = "-3 days" ) Then "T3 Medium / Reminder Mail" ElseIf( [Priority]="Low" And [PendingTimeUntilLastUpd] = "-3 days" ) Then "T3 Low / Reminder Mail"
+
+  ElseIf([Priority]="Critical" And [PendingTimeUntilLastUpd] = "-4 days" )Then "T4 Critical / Waiting Reminder Mail" ElseIf( [Priority]="High" And [PendingTimeUntilLastUpd] = "-4 days" ) Then "T4 High / Waiting Reminder Mail" ElseIf( [Priority]="Medium" And [PendingTimeUntilLastUpd] = "-4 days" ) Then "T4 Medium / Waiting Reminder Mail" ElseIf( [Priority]="Low" And [PendingTimeUntilLastUpd] = "-4 days" ) Then "T4 Low / Waiting Reminder Mail"
+
+  ElseIf([Priority]="Critical" And [PendingTimeUntilLastUpd] = "-5 days" )Then "T5 Critical / Closure Time" ElseIf( [Priority]="High" And [PendingTimeUntilLastUpd] = "-5 days - Closure" ) Then "T5 High / Closure Time" ElseIf( [Priority]="Medium" And [PendingTimeUntilLastUpd] = "-5 days" ) Then "T5 Medium / Closure Time" ElseIf( [Priority]="Low" And [PendingTimeUntilLastUpd] = "-5 days" ) Then "T5 Low / Closure Time"
+
+  ElseIf ( [PendingTimeUntilLastUpd] >= "-5 days" ) Then "Overdue"
+
+  ElseIf ( [PendingTimeUntilLastUpd] >= "-10 days" ) Then "Overdue"
+
+  ElseIf ( [PendingTimeUntilLastUpd] >= "-20 days" ) Then "Overdue"
+
+  ElseIf ( [PendingTimeUntilLastUpd] >= "-30 days" ) Then "Overdue"
+  
+  
+  
+##########################################################
+Upd INC depend of status
+##########################################################
+
+  If([Summary] = "%R1%" )Then "T0 Critical" ElseIf( [Summary] = "R1%" ) Then "T0 High" ElseIf( [Summary] = "R1%" ) Then "T0 Medium" ElseIf( [Summary] = "R1%" ) Then "T0 Low"
+
+  If( [Priority]="Critical" And [PendingTimeUntilLastUpd] = "0 days" )Then "T0 Critical" ElseIf( [Priority]="High" And [PendingTimeUntilLastUpd] = "0 days" ) Then "T0 High" ElseIf( [Priority]="Medium" And [PendingTimeUntilLastUpd] = "0 days" ) Then "T0 Medium" ElseIf( [Priority]="Low" And [PendingTimeUntilLastUpd] = "0 days" ) Then "T0 Low"
+
+
+
+##########################################################
+Life of INC
+##########################################################
+
+  If( [Priority]="Critical" And Match([Summary]; "*R1*" ))Then "T0 Critical" ElseIf([Priority]="High" And  Match([Summary]; "*R1*"  ) ) Then "T0 High" ElseIf([Priority]="Medium" And  Match([Summary]; "*R1*"  )) Then "T0 Medium" ElseIf([Priority]="Low" And Match([Summary]; "*R1*"  ) ) Then "T0 Low"
+
+
+
+##########################################################
+
+##########################################################
